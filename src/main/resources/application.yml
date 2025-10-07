@@ -1,0 +1,31 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    url: jdbc:postgresql://db.tvccuvzcmnrqtrakudju.supabase.co:5432/postgres
+    username: postgres
+    password: ${SUPABASE_DB_PASSWORD:sua-senha-aqui}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+supabase:
+  url: https://tvccuvzcmnrqtrakudju.supabase.co
+  key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2Y2N1dnpjbW5ycXRyYWt1ZGp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk2MzczNzQsImV4cCI6MjA3NTIxMzM3NH0.802UvU_k3qqyBQX_vRMiN7ofJy1wTKfZU1dk8UPybug
+
+jwt:
+  secret: inkflow-secret-key-2025
+  expiration: 86400000
+
+cors:
+  allowed-origins: http://localhost:5173,http://localhost:3000
