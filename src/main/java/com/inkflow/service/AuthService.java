@@ -49,7 +49,8 @@ public class AuthService {
     public Usuario register(String nome, String email, String senha) {
         try {
             String sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?) RETURNING *";
-            return jdbcTemplate.queryForObject(sql, usuarioRowMapper, nome, email, senha);
+            List<Usuario> usuarios = jdbcTemplate.query(sql, usuarioRowMapper, nome, email, senha);
+            return usuarios.isEmpty() ? null : usuarios.get(0);
         } catch (Exception e) {
             throw new RuntimeException("Erro ao criar usuário: " + e.getMessage());
         }
